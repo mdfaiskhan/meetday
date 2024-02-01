@@ -1,0 +1,28 @@
+import java.util.Arrays;
+
+public class Main {
+    // 1 0 2 0 6 = 12600
+    static void MoveZeros(int[] num) {
+        int zeroIndex = 0;
+
+        // Focusing on non-zero elements
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] != 0) {
+                num[zeroIndex] = num[i];
+                zeroIndex++; // zeroIndex = 3 , num[] = 12606
+            }
+        }
+
+        // Setting the remaining elements to 0
+        for (int i = zeroIndex; i < num.length; i++) {
+            num[i] = 0; // 12600
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+        int[] num1 = {6, 3, 3, 0, 0, 4};
+        MoveZeros(num1);
+        System.out.println(Arrays.toString(num1));
+    }
+}
