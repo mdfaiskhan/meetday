@@ -1,0 +1,28 @@
+public class ReverseString {
+    public static String reverseString(String inputStr) {
+        char[] charArray = inputStr.toCharArray();
+        int start = 0;
+        int end = charArray.length - 1;
+
+        while (start < end) {
+            // Swap characters at start and end indices
+            char temp = charArray[start];
+            charArray[start] = charArray[end];
+            charArray[end] = temp;
+
+            // Move towards the center of the string
+            start++;
+            end--;
+        }
+
+        return new String(charArray);
+    }
+
+    public static void main(String[] args) {
+        String originalString = "hello";
+        String reversedString = reverseString(originalString);
+
+        System.out.println("Original String: " + originalString);
+        System.out.println("Reversed String: " + reversedString);
+    }
+}
