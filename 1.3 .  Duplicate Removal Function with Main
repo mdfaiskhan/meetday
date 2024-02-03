@@ -1,0 +1,47 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] arr2 = {1, 2, 2, 1};
+        System.out.println("Original Array: " + Arrays.toString(arr2));
+
+        // Duplicate Removal
+        int[] uniqueArray = duplicate(arr2);
+        System.out.println("Array without Duplicates: " + Arrays.toString(uniqueArray));
+    }
+
+    static int[] duplicate(int[] arr2){
+        int length = arr2.length;
+        int count = 0;
+
+        // Counting unique elements
+        for(int i = 0; i < length; i++){
+            boolean bool = false;
+            for(int j = i + 1; j < length; j++){
+                if(arr2[i] == arr2[j]){
+                    bool = true;
+                    break;
+                }
+            }
+            if(!bool){
+                count++;
+            }
+        } 
+
+        // Creating a new array without duplicates
+        int[] newarr = new int[count];
+        int index = 0;
+        for(int i = 0; i < length; i++){
+            boolean bool = false;
+            for(int j = i + 1; j < length; j++){
+                if(arr2[i] == arr2[j]){
+                    bool = true;
+                    break;
+                }
+            }
+            if(!bool){
+                newarr[index] = arr2[i];
+                index++;
+            }
+        }
+        return newarr;
+    }
+}
