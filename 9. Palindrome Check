@@ -1,0 +1,27 @@
+public class PalindromeCheck {
+    public static boolean isPalindrome(char[] charArray) {
+        int start = 0;
+        int end = charArray.length - 1;
+
+        while (start < end) {
+            // Compare characters at start and end indices
+            if (charArray[start] != charArray[end]) {
+                return false; // Not a palindrome
+            }
+
+            // Move towards the center of the array
+            start++;
+            end--;
+        }
+
+        return true; // Palindrome
+    }
+
+    public static void main(String[] args) {
+        char[] palindromeArray = {'r', 'a', 'c', 'e', 'c', 'a', 'r'};
+        char[] nonPalindromeArray = {'h', 'e', 'l', 'l', 'o'};
+
+        System.out.println("Is palindrome: " + isPalindrome(palindromeArray));
+        System.out.println("Is palindrome: " + isPalindrome(nonPalindromeArray));
+    }
+}
