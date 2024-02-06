@@ -1,0 +1,15 @@
+public class Main{
+     static int power(int x, int e){
+         // edge case 
+         if(e == 0){
+             return 1;
+         }
+          return x*power(x,e-1);
+         
+     }
+    public static void main(String[] args) {
+      int v=  power(2,9);
+        
+        System.out.println(v);
+    }
+}
