@@ -1,0 +1,17 @@
+public class IntegerSum {
+    static int sumdigit(int n){
+      if(n==0){
+          return 0;
+      } 
+        int lastdigit = n%10;//to store last element
+        int remainingdigit = n/10;
+        
+        return lastdigit + sumdigit(remainingdigit);
+   }
+
+    public static void main(String[] args) {
+        int sum=12345;
+        int num=sumdigit(sum);
+        System.out.println(num);
+    }
+}
