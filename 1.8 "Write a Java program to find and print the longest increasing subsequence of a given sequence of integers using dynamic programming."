@@ -1,0 +1,40 @@
+public class LongestIncreasingSubsequence {
+    public static void main(String[] args) {
+        int[] sequence = { 10, 22, 9, 33, 21, 50, 41, 60, 80 };
+        int n = sequence.length;
+
+        int[] lis = new int[n];
+        int[] previousIndex = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            lis[i] = 1;
+            previousIndex[i] = -1;
+
+            for (int j = 0; j < i; j++) {
+                if (sequence[i] > sequence[j] && lis[i] < lis[j] + 1) {
+                    lis[i] = lis[j] + 1;
+                    previousIndex[i] = j;
+                }
+            }
+        }
+
+        int maxLength = 0;
+        int endIndex = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (lis[i] > maxLength) {
+                maxLength = lis[i];
+                endIndex = i;
+            }
+        }
+
+        // Print the longest increasing subsequence
+        System.out.print("Longest Increasing Subsequence: ");
+        while (endIndex != -1) {
+            System.out.print(sequence[endIndex] + " ");
+            endIndex = previousIndex[endIndex];
+        }
+
+        System.out.println();
+    }
+}
