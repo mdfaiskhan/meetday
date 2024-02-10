@@ -1,0 +1,31 @@
+//rotate the array to the right by k position
+//{1,2,3,4,5} k=2 == {4,5,1,2,3} 
+//k - temp arr[k] - {4,5} - {4,5,1,2,3}
+public class rightarray{
+    static void rotateright(int[] arr1,int k){
+        //{1,2,3,4,5} =5 , k=,12
+        int n=arr1.length;
+        k=k%n; //k=7 n=5 = 7%5=2 -- k=2 n=5 2%5=2 
+        int[] temp=new int[k]; //[_,_] =[4,_]=[4,5]
+        //to store last k elements
+        for(int i=0;i<k;i++) //[4,5]
+        {
+            temp[i]=arr1[n-k+i]; //n-k+1=5-2=0=3{4} =5-2+1=4{5}
+        }
+        //(1,2,3,4,5)=(_,_,1,2,3)
+        for(int i=n-1;i>=k;i--){
+            arr1[i]=arr1[i-k];
+        }
+        for(int i=0;i<k;i++){
+            arr1[i]=temp[i];
+        }
+        
+  System.out.println(Arrays.toString(arr1));
+    }
+    public static void main(String[] args){
+        int[] arr={1,2,3,4,5};
+        int k=2;
+        rotateright(arr,k);
+        // System.out.println(Arrays.toString(roatateright(arr));
+    }
+}
