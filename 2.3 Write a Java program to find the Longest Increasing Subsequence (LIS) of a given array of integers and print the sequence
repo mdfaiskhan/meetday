@@ -1,0 +1,52 @@
+public class HelloWorld {
+    static void printLIS(int[] nums, int maxIndex, int[] previousIndex) {
+        if (maxIndex != -1) {
+            printLIS(nums, previousIndex[maxIndex], previousIndex);
+            System.out.print(nums[maxIndex] + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+        //      { 10, 22, 9, 33};
+        // lis >> {1, 2, 1, 2}
+        // prev>> {-1, 0,-1, 2}
+        int[] nums = {10, 22, 9, 33};
+        int n = nums.length;
+
+        int[] lis = new int[n];
+        int[] previousIndex = new int[n];
+        // storing 1 in lis and -1 in prev
+        for (int i = 0; i < n; i++) {
+            lis[i] = 1;
+            previousIndex[i] = -1;
+        }
+        // 
+        for (int i = 1; i < n; i++)  // 1(22), 2(9), 3(33)
+        {
+            for (int j = 0; j < i; j++)  // 0(10), 1(22), 2(9)
+            {
+                if (nums[i] > nums[j] && lis[i] < lis[j] + 1) 
+                    // 22>10|1<2, 9>22|1<2, 33>9|1<2, 
+                {
+                    lis[i] = lis[j] + 1;  // lis[3] = 2, 
+                    previousIndex[i] = j;  // 
+                }
+            }
+        }
+        // Find the index of the max LIS value
+        int maxIndex = 0;
+        for (int i = 1; i < n; i++) // n - length
+        {
+            // lis >> {1, 2, 1, 2}
+            // prev>> {-1, 0,-1, 2}
+            if (lis[i] > lis[maxIndex])  // 2>1, 1>2, 2>1
+            {
+                maxIndex = i;  // 1, >>2
+            }
+        }
+        // Reconstruct and print the LIS
+        System.out.print("Longest Increasing Subsequence: ");
+        printLIS(nums, maxIndex, previousIndex);  // num, 
+    }
+}
