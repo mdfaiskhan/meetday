@@ -1,0 +1,41 @@
+public class AnagramCheck {
+    
+    public static boolean areAnagrams(String str1, String str2) {
+        // if lengths not equal
+        if(str1.length() != str2.length()) {
+            return false;
+        }
+        
+        int[] arr = new int[256]; // Assuming ASCII characters
+        
+        // Increment count for characters in str1
+        for(char c : str1.toCharArray()) {
+            arr[c]++;
+        }
+        
+        // Decrement count for characters in str2
+        for(char c : str2.toCharArray()) {
+            arr[c]--;
+        }
+        
+        // Check if all counts are zero
+        for(int count : arr) {
+            if(count != 0) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String str1 = "listen";
+        String str2 = "silent";
+        
+        if (areAnagrams(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are anagrams.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not anagrams.");
+        }
+    }
+}
