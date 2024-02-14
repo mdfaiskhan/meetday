@@ -1,0 +1,19 @@
+public class ReverseString {
+    
+    static String reversed(String inputs){
+        if(inputs == null ||inputs.isEmpty() ){
+            return inputs;
+        }
+    String reverseda = "";
+    
+    for(int i = inputs.length() - 1;i>=0;i--){
+        reverseda += inputs.charAt(i);
+    }
+        return reverseda;
+    }
+    public static void main(String[] args){
+        String input = "aggin";
+        String reverse2 = reversed(input);
+        System.out.println(reverse2);
+    }
+}
