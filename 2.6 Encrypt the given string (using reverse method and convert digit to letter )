@@ -1,0 +1,64 @@
+public class Main {
+    //Rotate Letters Function
+ 
+    static String Reverse(String message){
+        char[] charArray = new char[message.length()];
+        for(int i=0;i<message.length();i++){
+            charArray[i] = message.charAt(i); // **
+        } // [Faisal]
+        int length = charArray.length;
+        
+        for(int i=0;i<length/2;i++){
+            char temp=charArray[i];
+            charArray[i]=charArray[length-1-i];
+            charArray[length-1-i] = temp ; 
+        }
+        String reversedmessage = new String(charArray);
+        return reversedmessage;
+    }
+    
+    static String concatenate(String reverseMessage) {
+        StringBuilder encrypted = new StringBuilder();
+
+        for (char i : reverseMessage.toCharArray()) {
+            if (i == '0') {
+                encrypted.append("ZERO");
+            } else if (i == '1') {
+                encrypted.append("ONE");
+            } else if (i == '2') {
+                encrypted.append("TWO");
+            } else if (i == '3') {
+                encrypted.append("THREE");
+            } else if (i == '4') {
+                encrypted.append("FOUR");
+            } else if (i == '5') {
+                encrypted.append("FIVE");
+            } else if (i == '6') {
+                encrypted.append("SIX");
+            } else if (i == '7') {
+                encrypted.append("SEVEN");
+            } else if (i == '8') {
+                encrypted.append("EIGHT");
+            } else if (i == '9') {
+                encrypted.append("NINE");
+            } else {
+                encrypted.append(i);
+            }
+        }
+
+        return encrypted.toString();
+    }
+
+    
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+        String AB = "FA1";
+        System.out.println("Normal Message > "+AB);
+        String rev = Reverse(AB);
+        //System.out.println("reversed string > "+rev);
+        String submessage = concatenate(rev);
+        System.out.println("Encrypted Message >"+submessage);
+      
+        
+    }
+}
